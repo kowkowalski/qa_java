@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class AlexTest {
 
@@ -18,8 +18,7 @@ public class AlexTest {
 
     @Test
     public void testGetFriends() {
-        List<String> expectedFriends = List.of("Марти", "Глория", "Мелман");
-        assertEquals(expectedFriends, alex.getFriends());
+        assertEquals(List.of("Марти", "Глория", "Мелман"), alex.getFriends());
     }
 
     @Test

@@ -1,6 +1,7 @@
 package com.example;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.List;
 
@@ -36,5 +37,14 @@ public class LionTest {
         Lion lion = new Lion("Самка", new Feline());
         List<String> food = lion.getFood();
         assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
+    }
+
+
+    @Test
+    public void testGetFoodWithMock() throws Exception {
+        Feline felineMock = Mockito.mock(Feline.class);
+        Mockito.when(felineMock.eatMeat()).thenReturn(List.of("Мясо"));
+        Lion lion = new Lion("Самец", felineMock);
+        assertEquals(List.of("Мясо"), lion.getFood());
     }
 }
