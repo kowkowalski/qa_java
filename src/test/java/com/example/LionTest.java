@@ -39,12 +39,13 @@ public class LionTest {
         assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
     }
 
-
     @Test
-    public void testGetFoodWithMock() throws Exception {
-        Feline felineMock = Mockito.mock(Feline.class);
-        Mockito.when(felineMock.eatMeat()).thenReturn(List.of("Мясо"));
-        Lion lion = new Lion("Самец", felineMock);
-        assertEquals(List.of("Мясо"), lion.getFood());
+    public void testGetFoodWithSpy() throws Exception {
+        // Создаём spy вместо мок-объекта
+        Feline felineSpy = Mockito.spy(new Feline());
+        Lion lion = new Lion("Самка", felineSpy);
+
+        List<String> food = lion.getFood();
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
     }
 }
