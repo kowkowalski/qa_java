@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Cat {
 
-    private final Feline feline;
+    Feline feline;
 
     public Cat(Feline feline) {
         this.feline = feline;
