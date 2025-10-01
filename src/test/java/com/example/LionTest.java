@@ -40,12 +40,17 @@ public class LionTest {
     }
 
     @Test
-    public void testGetFoodWithSpy() throws Exception {
-        // Создаём spy вместо мок-объекта
-        Feline felineSpy = Mockito.spy(new Feline());
-        Lion lion = new Lion("Самка", felineSpy);
+    public void testGetFoodWithMock() throws Exception {
+        // создаём мок
+        Feline felineMock = Mockito.mock(Feline.class);
 
-        List<String> food = lion.getFood();
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
+        // задаём поведение мока
+        Mockito.when(felineMock.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+
+        // передаём мок в Lion
+        Lion lion = new Lion("Самец", felineMock);
+
+        // проверяем результат
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
     }
 }
